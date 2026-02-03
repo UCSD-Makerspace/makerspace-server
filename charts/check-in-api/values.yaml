@@ -1,0 +1,21 @@
+image:
+  repository: ghcr.io/ucsd-makerspace/check-in-api
+  tag: latest
+  pullPolicy: Always
+
+envSecret: env-vars
+googleCredentialsSecret: google-credentials
+
+wireguardIP: "10.8.0.1"
+
+config:
+  GOOGLE_CREDENTIALS_PATH: "/secrets/google/creds.json"
+  UCSD_API_URL: "https://api.ucsd.edu:8243/"
+  FABMAN_SPACE: "1742"
+  FABMAN_ACCOUNT: "1046"
+  FABMAN_DIB_PACKAGE: "5657"
+  USER_SHEET_TAB: "Database"
+  WAIVER_SHEET_TAB: "Waiver Signatures"
+  ACTIVITY_SHEET_TAB: "Activity Log"
+  REDIS_HOST: "redis"
+  REDIS_PORT: "6379"

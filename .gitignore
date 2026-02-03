@@ -1,0 +1,6 @@
+.idea/
+.venv/
+.vscode/
+.DS_Store
+inventory.ini
+secrets.yml

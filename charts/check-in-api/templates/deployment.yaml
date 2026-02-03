@@ -1,0 +1,41 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: api
+spec:
+  replicas: 1
+  revisionHistoryLimit: 3
+  selector:
+    matchLabels:
+      app: api
+  template:
+    metadata:
+      labels:
+        app: api
+    spec:
+      volumes:
+      - name: google-credentials
+        secret:
+          secretName: {{ .Values.googleCredentialsSecret }}
+      containers:
+      - name: api
+        image: {{ .Values.image.repository }}:{{ .Values.image.tag }}
+        imagePullPolicy: {{ .Values.image.pullPolicy }}
+        ports:
+        - containerPort: 8000
+        envFrom:
+        - secretRef:
+            name: {{ .Values.envSecret }}
+        - configMapRef:
+            name: {{ .Release.Name }}-config
+        volumeMounts:
+        - name: google-credentials
+          mountPath: /secrets/google
+          readOnly: true
+        resources:
+          requests:
+            memory: "128Mi"
+            cpu: "250m"
+          limits:
+            memory: "256Mi"
+            cpu: "1000m"

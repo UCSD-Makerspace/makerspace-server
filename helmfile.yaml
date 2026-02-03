@@ -1,0 +1,8 @@
+helmDefaults:
+  kubeContext: makerspace
+
+releases:
+  - name: check-in-api
+    namespace: ciapi # short for (c)heck-(i)n (api) to make -n less painful
+    createNamespace: true
+    chart: ./charts/check-in-api
