@@ -112,6 +112,7 @@
           - git
           - curl
           - htop
+          - vim
         state: present
         update_cache: true
 
